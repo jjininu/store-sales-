@@ -16,6 +16,17 @@ import pandas as pd
 from weekly_sales.constant import *
 from weekly_sales.util.util import read_yaml_file,save_object,save_numpy_array_data,load_data
 
+class FeatureGenerator(BaseEstimator, TransformerMixin):
+  def __init__(self,Date_ix=1):
+    self.Date_ix = Date_ix
+  def fit(self):
+    pass
+  def transform(self,X):
+    date =pd.to_datetime( X[:, self.total_bedrooms_ix])
+    year = date.year()
+    month = date.month()
+    day_week = date.day_of_week
+    generated_feature = np.c_[X,date,year,day_week]
 
 
 
@@ -49,9 +60,14 @@ class DataTransformation:
 
             num_pipeline = Pipeline(steps=[
                 ('imputer', SimpleImputer(strategy="median"))
-                ('scaler', StandardScaler())
-            ]
+                ('scaler', StandardScaler())]
             )
+
+            cat_pipeline = Pipeline(steps=[
+                 ('impute', SimpleImputer(strategy="most_frequent")),
+                 ('to_date',FeatureGenerator()),
+                 ('scaler', StandardScaler(with_mean=False))])
+
 
 
             
@@ -62,7 +78,7 @@ class DataTransformation:
 
             preprocessing = ColumnTransformer([
                 ('num_pipeline', num_pipeline, numerical_columns),
-                #('cat_pipeline', cat_pipeline, categorical_columns),
+                ('cat_pipeline', cat_pipeline, categorical_columns),
             ])
             return preprocessing
 
