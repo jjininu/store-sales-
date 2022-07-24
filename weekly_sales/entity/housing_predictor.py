@@ -1,13 +1,13 @@
 import os
 import sys
 
-from housing.exception import HousingException
-from housing.util.util import load_object
+from weekly_sales.exception import HousingException
+from weekly_sales.util.util import load_object
 
 import pandas as pd
 
 
-class HousingData:
+class SalesData:
 
     def __init__(self,
                  Store : int64,
@@ -21,13 +21,13 @@ class HousingData:
                  ):
         try:
             
-            self.Store = Store,
-            self.Date = Date,
-            self.Weekly_Sales = Weekly_Sales,
-            self.Holiday_Flag = Holiday_Flag,
-            self.Temperature = Temperature,
-            self.Fuel_Price = Fuel_Price,
-            self.CPI = CPI,
+            self.Store = Store
+            self.Date = Date
+            self.Weekly_Sales = Weekly_Sales
+            self.Holiday_Flag = Holiday_Flag
+            self.Temperature = Temperature
+            self.Fuel_Price = Fuel_Price
+            self.CPI = CPI
             self.Unemployment = Unemployment 
 
 
@@ -37,7 +37,7 @@ class HousingData:
         except Exception as e:
             raise CustomException(e, sys) from e
 
-    def get_sales_input_data_frame(self)
+    def get_sales_input_data_frame(self):
         try:
             sales_input_dict = self.get_sales_data_as_dict()
             return pd.DataFrame(sales_input_dict)

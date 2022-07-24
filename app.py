@@ -2,16 +2,16 @@ from flask import Flask, request
 import sys
 
 import pip
-from store_sales.util.util import read_yaml_file, write_yaml_file
+from Weekly_sales.util.util import read_yaml_file, write_yaml_file
 from matplotlib.style import context
-from store_sales.logger import logging
-from store_sales.exception import HousingException
+from Weekly_sales.logger import logging
+from Weekly_sales.exception import HousingException
 import os, sys
 import json
-from store_sales.config.configuration import Configuartion
-from store_sales.constant import CONFIG_DIR, get_current_time_stamp
-from store_sales.pipeline.pipeline import Pipeline
-from store_sales.entity.housing_predictor import HousingPredictor, HousingData
+from Weekly_sales.config.configuration import Configuartion
+from Weekly_sales.constant import CONFIG_DIR, get_current_time_stamp
+from Weekly_sales.pipeline.pipeline import Pipeline
+from Weekly_sales.entity.housing_predictor import salesPredictor, SalesData
 from flask import send_file, abort, render_template
 
 
@@ -25,7 +25,7 @@ PIPELINE_DIR = os.path.join(ROOT_DIR, PIPELINE_FOLDER_NAME)
 MODEL_DIR = os.path.join(ROOT_DIR, SAVED_MODELS_DIR_NAME)
 
 
-from store_sales.logger import get_log_dataframe
+from weekly_sales.logger import get_log_dataframe
 
 SALES_DATA_KEY = "sales_data"
 WEEKLY_SALES_VALUE_KEY = "WEEKLY_SALES_value"
@@ -108,32 +108,33 @@ def predict():
     }
 
     if request.method == 'POST':
-        longitude = float(request.form['longitude'])
-        latitude = float(request.form['latitude'])
-        housing_median_age = float(request.form['housing_median_age'])
-        total_rooms = float(request.form['total_rooms'])
-        total_bedrooms = float(request.form['total_bedrooms'])
-        population = float(request.form['population'])
-        households = float(request.form['households'])
-        median_income = float(request.form['median_income'])
-        ocean_proximity = request.form['ocean_proximity']
 
-        housing_data = HousingData(longitude=longitude,
-                                   latitude=latitude,
-                                   housing_median_age=housing_median_age,
-                                   total_rooms=total_rooms,
-                                   total_bedrooms=total_bedrooms,
-                                   population=population,
-                                   households=households,
-                                   median_income=median_income,
-                                   ocean_proximity=ocean_proximity,
-                                   )
-        housing_df = housing_data.get_housing_input_data_frame()
-        housing_predictor = HousingPredictor(model_dir=MODEL_DIR)
-        median_housing_value = housing_predictor.predict(X=housing_df)
+
+        Holiday_Flag = float(request.form['Holiday_Flag'])
+        Temperature = float(request.form['Temperature'])
+        Fuel_Price = float(request.form['Fuel_Pricee'])
+        CPI = float(request.form['CPI'])
+        Unemployment = float(request.form['Unemployment'])
+
+
+
+
+
+        sales_data = Salesdata(Holiday_Flag = Holiday_Flag,
+                                 Temperature = Temperature,
+                                 Fuel_Price = Fuel_Price,
+                                 CPI = CPI,
+                                Unemployment = Unemployment)
+            
+            
+            
+                             
+        sales_df = sales_data.get_sales_input_data_frame()
+        sales_predictor = salesPredictor(model_dir=MODEL_DIR)
+        weekly_sales = sales_predictor.predict(X=sales_df)
         context = {
-            HOUSING_DATA_KEY: housing_data.get_housing_data_as_dict(),
-            MEDIAN_HOUSING_VALUE_KEY: median_housing_value,
+            SALES_DATA_KEY: sales_data.get_sales_data_as_dict(),
+            WEEKLY_SALES_VALUE_KEY: weekly_sales,
         }
         return render_template('predict.html', context=context)
     return render_template("predict.html", context=context)

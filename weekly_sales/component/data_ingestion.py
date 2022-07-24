@@ -1,8 +1,8 @@
-from store_sales.entity.config_entity import DataIngestionConfig
+from weekly_sales.entity.config_entity import DataIngestionConfig
 import sys,os
-from store_sales.exception import CustomException
-from store_sales.logger import logging
-from store_sales.entity.artifact_entity import DataIngestionArtifact
+from weekly_sales.exception import CustomException
+from weekly_sales.logger import logging
+from weekly_sales.entity.artifact_entity import DataIngestionArtifact
 import tarfile
 import numpy as np
 from six.moves import urllib

@@ -1,11 +1,11 @@
 
-from store_sales.entity.config_entity import DataIngestionConfig, DataTransformationConfig,DataValidationConfig,   \
+from weekly_sales.entity.config_entity import DataIngestionConfig, DataTransformationConfig,DataValidationConfig,   \
 ModelTrainerConfig,ModelEvaluationConfig,ModelPusherConfig,TrainingPipelineConfig
-from store_sales.util.util import read_yaml_file
-from store_sales.logger import logging
+from weekly_sales.util.util import read_yaml_file
+from weekly_sales.logger import logging
 import sys,os
-from store_sales.constant import *
-from store_sales.exception import CustomException
+from weekly_sales.constant import *
+from weekly_sales.exception import CustomException
 
 
 class Configuartion:

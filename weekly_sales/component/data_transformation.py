@@ -1,9 +1,9 @@
 from cgi import test
 from sklearn import preprocessing
-from store_sales.exception import CustomException
-from store_sales.logger import logging
-from store_sales.entity.config_entity import DataTransformationConfig 
-from store_sales.entity.artifact_entity import DataIngestionArtifact,\
+from weekly_sales.exception import CustomException
+from weekly_sales.logger import logging
+from weekly_sales.entity.config_entity import DataTransformationConfig 
+from weekly_sales.entity.artifact_entity import DataIngestionArtifact,\
 DataValidationArtifact,DataTransformationArtifact
 import sys,os
 import numpy as np
@@ -13,29 +13,9 @@ from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 import pandas as pd
-from store_sales.constant import *
-from store_sales.util.util import read_yaml_file,save_object,save_numpy_array_data,load_data
+from weekly_sales.constant import *
+from weekly_sales.util.util import read_yaml_file,save_object,save_numpy_array_data,load_data
 
-
-#   longitude: float
-#   latitude: float
-#   housing_median_age: float
-#   total_rooms: float
-#   total_bedrooms: float
-#   population: float
-#   households: float
-#   median_income: float
-#   median_house_value: float
-#   ocean_proximity: category
-#   income_cat: float
-
-
-class Dropcolumn:
-    def __init__(self,cols):
-        self.cols = cols
-    def drop(self,df):
-        df.drop(cols,axis = 1)
-    return df
 
 
 

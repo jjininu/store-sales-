@@ -1,7 +1,7 @@
-from store_sales.logger import logging
-from store_sales.exception import HousingException
-from store_sales.entity.artifact_entity import ModelPusherArtifact, ModelEvaluationArtifact 
-from store_sales.entity.config_entity import ModelPusherConfig
+from weekly_sales.logger import logging
+from weekly_sales.exception import HousingException
+from weekly_sales.entity.artifact_entity import ModelPusherArtifact, ModelEvaluationArtifact 
+from weekly_sales.entity.config_entity import ModelPusherConfig
 import os, sys
 import shutil
 

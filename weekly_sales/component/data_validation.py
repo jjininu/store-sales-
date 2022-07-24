@@ -1,9 +1,9 @@
 
 
-from store_sales.logger import logging
-from store_sales.exception import CustomException
-from store_sales.entity.config_entity import DataValidationConfig
-from store_sales.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact
+from weekly_sales.logger import logging
+from weekly_sales.exception import CustomException
+from weekly_sales.entity.config_entity import DataValidationConfig
+from weekly_sales.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact
 import os,sys
 import pandas  as pd
 from evidently.model_profile import Profile

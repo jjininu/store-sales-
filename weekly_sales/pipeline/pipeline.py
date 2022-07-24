@@ -1,27 +1,27 @@
 from collections import namedtuple
 from datetime import datetime
 import uuid
-from store_sales.config.configuration import Configuartion
-from store_sales.logger import logging, get_log_file_name
-from store_sales.exception import HousingException
+from weekly_sales.config.configuration import Configuartion
+from weekly_sales.logger import logging, get_log_file_name
+from weekly_sales.exception import HousingException
 from threading import Thread
 from typing import List
 
 from multiprocessing import Process
-from store_sales.entity.artifact_entity import ModelPusherArtifact, DataIngestionArtifact, ModelEvaluationArtifact
-from store_sales.entity.artifact_entity import DataValidationArtifact, DataTransformationArtifact, ModelTrainerArtifact
-from store_sales.entity.config_entity import DataIngestionConfig, ModelEvaluationConfig
-from store_sales.component.data_ingestion import DataIngestion
-from store_sales.component.data_validation import DataValidation
-from store_sales.component.data_transformation import DataTransformation
-from store_sales.component.model_trainer import ModelTrainer
-from store_sales.component.model_evaluation import ModelEvaluation
-from store_sales.component.model_pusher import ModelPusher
+from weekly_sales.entity.artifact_entity import ModelPusherArtifact, DataIngestionArtifact, ModelEvaluationArtifact
+from weekly_sales.entity.artifact_entity import DataValidationArtifact, DataTransformationArtifact, ModelTrainerArtifact
+from weekly_sales.entity.config_entity import DataIngestionConfig, ModelEvaluationConfig
+from weekly_sales.component.data_ingestion import DataIngestion
+from weekly_sales.component.data_validation import DataValidation
+from weekly_sales.component.data_transformation import DataTransformation
+from weekly_sales.component.model_trainer import ModelTrainer
+from weekly_sales.component.model_evaluation import ModelEvaluation
+from weekly_sales.component.model_pusher import ModelPusher
 import os, sys
 from collections import namedtuple
 from datetime import datetime
 import pandas as pd
-from store_sales.constant import EXPERIMENT_DIR_NAME, EXPERIMENT_FILE_NAME
+from weekly_sales.constant import EXPERIMENT_DIR_NAME, EXPERIMENT_FILE_NAME
 
 Experiment = namedtuple("Experiment", ["experiment_id", "initialization_timestamp", "artifact_time_stamp",
                                        "running_status", "start_time", "stop_time", "execution_time", "message",

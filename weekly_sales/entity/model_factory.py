@@ -3,13 +3,13 @@ import importlib
 from pyexpat import model
 import numpy as np
 import yaml
-from store_sales.exception import CustomException
+from weekly_sales.exception import CustomException
 import os
 import sys
 
 from collections import namedtuple
 from typing import List
-from housing.logger import logging
+from weekly_sales.logger import logging
 from sklearn.metrics import r2_score,mean_squared_error
 GRID_SEARCH_KEY = 'grid_search'
 MODULE_KEY = 'module'
