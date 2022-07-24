@@ -1,0 +1,35 @@
+columns:
+Store:           int64
+Date:            object
+Weekly_Sales:    float64
+Holiday_Flag:    int64
+Temperature:     float64
+Fuel_Price:      float64
+CPI:             float64
+Unemployment:    float64
+
+numerical_columns:
+  - Store
+  - Weekly_Sales
+  - Holiday_Flag
+  - Temperature
+  - Fuel_Price 
+  - CPI
+  - Unemployment
+
+
+
+
+categorical_columns:
+  - Date
+
+
+
+
+target_column: Weekly_Sales
+
+
+  
+
+
+
