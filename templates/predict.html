@@ -48,16 +48,16 @@
                     required />
             </div>
             <div class="mb-3">
-                <label class="form-label">Households</label>
-                <input class="form-control" type="text" name="households" placeholder="Enter a value of households"
+                <label class="form-label">Fuel_Price</label>
+                <input class="form-control" type="text" name="Fuel_Price" placeholder="Enter Fuel_Price"
                     required />
             </div>
             <div class="mb-3">
-                <label class="form-label">Median Income</label>
-                <input class="form-control" type="text" name="median_income"
-                    placeholder="Enter a value of median_income" required />
+                <label class="form-label">CPI</label>
+                <input class="form-control" type="text" name="CPI"
+                    placeholder="Enter CPI" required />
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label class="form-label">Ocean Proximity</label>
                 <select class="form-control" name="ocean_proximity" placeholder="Enter a value of ocean_proximity"
                     required>
@@ -79,10 +79,10 @@
                     </option>
 
                 </select>
-            </div>
+            </div> -->
             <div class="mb-3">
 
-                <input class="btn btn-primary" type="submit" value="Predict Median House Value" required />
+                <input class="btn btn-primary" type="submit" value="Predict weekly sales" required />
             </div>
 
         </form>
@@ -91,18 +91,18 @@
     <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
         <div class="card">
             <div class="card-header">
-              California housing price
+              Walmart weekly sales
             </div>
             <div class="card-body">
-        {% if context['housing_data'] is not none %}
+        {% if context['sales_data'] is not none %}
         <table class="table table-striped">
-            <caption>Califoria Housing Prediction </caption>
+            <caption>Weekly Sales Prediction </caption>
             <tr>
                 <th>Input Feature</th>
                 <th>Feature Value</th>
 
             </tr>
-            {% for column,value in context['housing_data'].items() %}
+            {% for column,value in context['sales_data'].items() %}
 
 
 
@@ -114,9 +114,9 @@
             {% endfor %}
             <tr>
 
-                <td>median_house_value </td>
+                <td>Weekly Sales </td>
                 <td>
-                    {{ context['median_house_value'] }}
+                    {{ context['Weekly Sales'] }}
                 </td>
             </tr>
         </table>
@@ -124,7 +124,7 @@
         {% else %}
        
               <h5 class="card-title">Submit Form</h5>
-              <p class="card-text">Kindly provide necessary information to estimate housing price in california</p>
+              <p class="card-text">Kindly provide necessary information to estimate Weekly Sales</p>
             
          
 
