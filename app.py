@@ -103,8 +103,8 @@ def train():
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     context = {
-        HOUSING_DATA_KEY: None,
-        MEDIAN_HOUSING_VALUE_KEY: None
+        SALES_DATA_KEY: None,
+        WEEKLY_SALES_VALUE_KEY: None
     }
 
     if request.method == 'POST':
