@@ -65,6 +65,7 @@ class DataIngestion:
             if os.path.exists(raw_data_dir):
                 os.remove(raw_data_dir)
             os.makedirs(raw_data_dir,exist_ok=True)
+            local_file = Data
             read_write_file()
 
 
@@ -129,13 +130,18 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e,sys) from e
 
-    def initiate_data_ingestion(self)-> DataIngestionArtifact:
+    def initiate_data_ingestion_from_url(self)-> DataIngestionArtifact:
         try:
             tgz_file_path =  self.download_housing_data()
             self.extract_tgz_file(tgz_file_path=tgz_file_path)
             return self.split_data_as_train_test()
         except Exception as e:
             raise CustomException(e,sys) from e
+    def initiate_data_ingestion_from_local(self):
+        try:
+            
+        except Exception as e:
+            raise CustomException(e.sys)
     
     
 
