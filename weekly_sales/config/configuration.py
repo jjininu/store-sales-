@@ -1,4 +1,5 @@
 
+from weekly_sales.constant import DATA_LOCAL_FILE_PATH_KEY
 from weekly_sales.entity.config_entity import DataIngestionConfig, DataTransformationConfig,DataValidationConfig,   \
 ModelTrainerConfig,ModelEvaluationConfig,ModelPusherConfig,TrainingPipelineConfig
 from weekly_sales.util.util import read_yaml_file
@@ -54,14 +55,17 @@ class Configuartion:
                 data_ingestion_info[DATA_INGESTION_TEST_DIR_KEY]
             )
 
+            local_file_path = data_ingestion_info[DATA_LOCAL_FILE_PATH_KEY]
+
 
             data_ingestion_config=DataIngestionConfig(
                 dataset_download_url=dataset_download_url, 
                 tgz_download_dir=tgz_download_dir, 
                 raw_data_dir=raw_data_dir, 
-                ingested_train_dir=ingested_train_dir, 
-                ingested_test_dir=ingested_test_dir
-            )
+                local_file_path = local_file_path,
+                ingested_train_dir = ingested_train_dir, 
+                ingested_test_dir = ingested_test_dir
+                )
             logging.info(f"Data Ingestion config: {data_ingestion_config}")
             return data_ingestion_config
         except Exception as e:

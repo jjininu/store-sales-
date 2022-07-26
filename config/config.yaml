@@ -6,7 +6,7 @@ data_ingestion_config:
   dataset_download_url: https://www.kaggle.com/c/walmart-recruiting-store-sales-forecasting/data
   raw_data_dir: raw_data
   tgz_download_dir: tgz_data
-  local_file_path : 
+  local_file_path : ""
   ingested_dir: ingested_data
   ingested_train_dir: train
   ingested_test_dir: test 
