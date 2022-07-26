@@ -8,7 +8,7 @@ import numpy as np
 from six.moves import urllib
 import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
-
+from weekly_sales.util.util import read_write_file
 class DataIngestion:
 
     def __init__(self,data_ingestion_config:DataIngestionConfig ):
@@ -53,11 +53,24 @@ class DataIngestion:
 
             logging.info(f"Extracting tgz file: [{tgz_file_path}] into dir: [{raw_data_dir}]")
             with tarfile.open(tgz_file_path) as sales_tgz_file_obj:
-                housing_tgz_file_obj.extractall(path=raw_data_dir)
+                sales_tgz_file_obj.extractall(path=raw_data_dir)
             logging.info(f"Extraction completed")
 
         except Exception as e:
             raise CustomException(e,sys) from e
+
+    def read_from_local_drive(self):
+        try:
+            raw_data_dir = self.data_ingestion_config.raw_data_dir
+            if os.path.exists(raw_data_dir):
+                os.remove(raw_data_dir)
+            os.makedirs(raw_data_dir,exist_ok=True)
+            read_write_file()
+
+
+            
+        except Exception as e:
+            raise CustomException(e,sys)
     
     def split_data_as_train_test(self) -> DataIngestionArtifact:
         try:
@@ -123,6 +136,7 @@ class DataIngestion:
             return self.split_data_as_train_test()
         except Exception as e:
             raise CustomException(e,sys) from e
+    
     
 
 

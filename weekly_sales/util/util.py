@@ -109,4 +109,8 @@ def load_data(file_path: str, schema_file_path: str) -> pd.DataFrame:
 
     except Exception as e:
         raise CustomException(e,sys) from e
+
+def read_write_file(x,y):
+  with open(x,"r") as x , open(y,"w") as y:
+    y.write(x.read())
     
