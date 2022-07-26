@@ -1,5 +1,5 @@
 
-from weekly_sales.constant import DATA_LOCAL_FILE_PATH_KEY
+from weekly_sales.constant import *
 from weekly_sales.entity.config_entity import DataIngestionConfig, DataTransformationConfig,DataValidationConfig,   \
 ModelTrainerConfig,ModelEvaluationConfig,ModelPusherConfig,TrainingPipelineConfig
 from weekly_sales.util.util import read_yaml_file
