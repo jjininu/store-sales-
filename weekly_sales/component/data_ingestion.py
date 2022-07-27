@@ -67,7 +67,8 @@ class DataIngestion:
                 os.remove(raw_data_dir)
             os.makedirs(raw_data_dir,exist_ok=True)
             local_file = self.data_ingestion_config.local_file_path
-            read_write_file(local_file,raw_data_dir)
+            read_write_file(raw_data_dir,local_file)
+            return raw_data_dir
 
 
             
@@ -140,7 +141,8 @@ class DataIngestion:
             raise CustomException(e,sys) from e
     def initiate_data_ingestion_from_local(self):
         try:
-            pass
+           self.read_from_local_drive()
+
         except Exception as e:
             raise CustomException(e.sys)
     
