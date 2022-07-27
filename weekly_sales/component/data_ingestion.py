@@ -66,8 +66,8 @@ class DataIngestion:
             if os.path.exists(raw_data_dir):
                 os.remove(raw_data_dir)
             os.makedirs(raw_data_dir,exist_ok=True)
-            local_file = self.data_ingestion_config.DATA
-            read_write_file(l)
+            local_file = self.data_ingestion_config.local_file_path
+            read_write_file(local_file,raw_data_dir)
 
 
             
