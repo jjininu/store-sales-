@@ -6,7 +6,7 @@ __pycache__/
 saved_models/*
 # C extensions
 *.so
-housing/artifact
+weekly_sales/artifact
 # Distribution / packaging
 .Python
 build/
@@ -110,6 +110,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+Store_sales_predictor.egg-info
 
 # Spyder project settings
 .spyderproject
