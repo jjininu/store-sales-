@@ -5,7 +5,8 @@ from weekly_sales.logger import logging
 from weekly_sales.entity.artifact_entity import DataIngestionArtifact
 import tarfile
 import numpy as np
-from six.moves import urllib
+import urllib.request
+
 import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
 from weekly_sales.util.util import read_write_file
@@ -66,7 +67,7 @@ class DataIngestion:
             if os.path.exists(raw_data_dir):
                 os.remove(raw_data_dir)
             os.makedirs(raw_data_dir,exist_ok=True)
-            local_file = self.data_ingestion_config.local_file_path
+            local_file = self.data_ingestion_config.local_file
             read_write_file(raw_data_dir,local_file)
             return raw_data_dir
 

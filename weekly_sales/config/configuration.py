@@ -62,7 +62,7 @@ class Configuartion:
                 dataset_download_url=dataset_download_url, 
                 tgz_download_dir=tgz_download_dir, 
                 raw_data_dir=raw_data_dir, 
-                local_file_path = local_file,
+                local_file = local_file,
                 ingested_train_dir = ingested_train_dir, 
                 ingested_test_dir = ingested_test_dir
                 )
