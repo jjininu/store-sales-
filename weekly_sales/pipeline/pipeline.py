@@ -49,7 +49,7 @@ class Pipeline(Thread):
             data_ingestion = DataIngestion(data_ingestion_config=self.config.get_data_ingestion_config())
             return data_ingestion.initiate_data_ingestion_from_local()
         except Exception as e:
-            raise CustomException(e, sys) from e
+            raise CustomException(e,sys) from e
 
     def start_data_validation(self, data_ingestion_artifact: DataIngestionArtifact) \
             -> DataValidationArtifact:
