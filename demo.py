@@ -1,8 +1,8 @@
-from housing.pipeline.pipeline import Pipeline
-from housing.exception import HousingException
-from housing.logger import logging
-from housing.config.configuration import Configuartion
-from housing.component.data_transformation import DataTransformation
+from weekly_sales.pipeline.pipeline import Pipeline
+from weekly_sales.exception import CustomException
+from weekly_sales.logger import logging
+from weekly_sales.config.configuration import Configuartion
+from weekly_sales.component.data_transformation import DataTransformation
 import os
 def main():
     try:
