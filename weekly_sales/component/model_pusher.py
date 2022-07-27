@@ -1,5 +1,5 @@
 from weekly_sales.logger import logging
-from weekly_sales.exception import HousingException
+from weekly_sales.exception import CustomException
 from weekly_sales.entity.artifact_entity import ModelPusherArtifact, ModelEvaluationArtifact 
 from weekly_sales.entity.config_entity import ModelPusherConfig
 import os, sys
@@ -39,7 +39,7 @@ class ModelPusher:
             logging.info(f"Model pusher artifact: [{model_pusher_artifact}]")
             return model_pusher_artifact
         except Exception as e:
-            raise HousingException(e, sys) from e
+            raise CustomException(e, sys) from e
 
     def initiate_model_pusher(self) -> ModelPusherArtifact:
         try:
