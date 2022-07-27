@@ -3,7 +3,7 @@ from datetime import datetime
 import uuid
 from weekly_sales.config.configuration import Configuartion
 from weekly_sales.logger import logging, get_log_file_name
-from weekly_sales.exception import HousingException
+from weekly_sales.exception import CustomException
 from threading import Thread
 from typing import List
 
