@@ -7,7 +7,4 @@ PyYAML
 evidently
 dill
 matplotlib
-pandas
-
-
 -e .
