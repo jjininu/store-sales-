@@ -1,3 +1,4 @@
+from threading import local
 from weekly_sales.entity.config_entity import DataIngestionConfig
 import sys,os
 from weekly_sales.exception import CustomException
@@ -24,46 +25,9 @@ class DataIngestion:
             raise CustomException(e,sys)
     
 
-    # def download_housing_data(self,) -> str:
-    #     try:
-    #         #extraction remote url to download dataset
-    #         download_url = self.data_ingestion_config.dataset_download_url
+   
 
-    #         #folder location to download file
-    #         tgz_download_dir = self.data_ingestion_config.tgz_download_dir
-            
-    #         os.makedirs(tgz_download_dir,exist_ok=True)
-
-    #         sales_file_name = os.path.basename(download_url)
-
-    #         tgz_file_path = os.path.join(tgz_download_dir, sales_file_name)
-
-    #         logging.info(f"Downloading file from :[{download_url}] into :[{tgz_file_path}]")
-    #         urllib.request.urlretrieve(download_url, tgz_file_path)
-    #         logging.info(f"File :[{tgz_file_path}] has been downloaded successfully.")
-    #         return tgz_file_path
-
-    #     except Exception as e:
-    #         raise CustomException(e,sys) from e
-
-    # def extract_tgz_file(self,tgz_file_path:str):
-    #     try:
-    #         raw_data_dir = self.data_ingestion_config.raw_data_dir
-
-    #         if os.path.exists(raw_data_dir):
-    #             os.remove(raw_data_dir)
-
-    #         os.makedirs(raw_data_dir,exist_ok=True)
-
-    #         logging.info(f"Extracting tgz file: [{tgz_file_path}] into dir: [{raw_data_dir}]")
-    #         with tarfile.open(tgz_file_path) as sales_tgz_file_obj:
-    #             sales_tgz_file_obj.extractall(path=raw_data_dir)
-    #         logging.info(f"Extraction completed")
-
-    #     except Exception as e:
-    #         raise CustomException(e,sys) from e
-
-    def read_from_local_drive(self):
+    def transfer_data(self):
         
         try:
             raw_data_dir = self.data_ingestion_config.raw_data_dir
