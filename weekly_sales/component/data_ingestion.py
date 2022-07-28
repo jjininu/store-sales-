@@ -10,6 +10,9 @@ import urllib.request
 import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
 from weekly_sales.util.util import read_write_file
+import shutil
+
+
 class DataIngestion:
 
     def __init__(self,data_ingestion_config:DataIngestionConfig ):
@@ -21,44 +24,44 @@ class DataIngestion:
             raise CustomException(e,sys)
     
 
-    def download_housing_data(self,) -> str:
-        try:
-            #extraction remote url to download dataset
-            download_url = self.data_ingestion_config.dataset_download_url
+    # def download_housing_data(self,) -> str:
+    #     try:
+    #         #extraction remote url to download dataset
+    #         download_url = self.data_ingestion_config.dataset_download_url
 
-            #folder location to download file
-            tgz_download_dir = self.data_ingestion_config.tgz_download_dir
+    #         #folder location to download file
+    #         tgz_download_dir = self.data_ingestion_config.tgz_download_dir
             
-            os.makedirs(tgz_download_dir,exist_ok=True)
+    #         os.makedirs(tgz_download_dir,exist_ok=True)
 
-            sales_file_name = os.path.basename(download_url)
+    #         sales_file_name = os.path.basename(download_url)
 
-            tgz_file_path = os.path.join(tgz_download_dir, sales_file_name)
+    #         tgz_file_path = os.path.join(tgz_download_dir, sales_file_name)
 
-            logging.info(f"Downloading file from :[{download_url}] into :[{tgz_file_path}]")
-            urllib.request.urlretrieve(download_url, tgz_file_path)
-            logging.info(f"File :[{tgz_file_path}] has been downloaded successfully.")
-            return tgz_file_path
+    #         logging.info(f"Downloading file from :[{download_url}] into :[{tgz_file_path}]")
+    #         urllib.request.urlretrieve(download_url, tgz_file_path)
+    #         logging.info(f"File :[{tgz_file_path}] has been downloaded successfully.")
+    #         return tgz_file_path
 
-        except Exception as e:
-            raise CustomException(e,sys) from e
+    #     except Exception as e:
+    #         raise CustomException(e,sys) from e
 
-    def extract_tgz_file(self,tgz_file_path:str):
-        try:
-            raw_data_dir = self.data_ingestion_config.raw_data_dir
+    # def extract_tgz_file(self,tgz_file_path:str):
+    #     try:
+    #         raw_data_dir = self.data_ingestion_config.raw_data_dir
 
-            if os.path.exists(raw_data_dir):
-                os.remove(raw_data_dir)
+    #         if os.path.exists(raw_data_dir):
+    #             os.remove(raw_data_dir)
 
-            os.makedirs(raw_data_dir,exist_ok=True)
+    #         os.makedirs(raw_data_dir,exist_ok=True)
 
-            logging.info(f"Extracting tgz file: [{tgz_file_path}] into dir: [{raw_data_dir}]")
-            with tarfile.open(tgz_file_path) as sales_tgz_file_obj:
-                sales_tgz_file_obj.extractall(path=raw_data_dir)
-            logging.info(f"Extraction completed")
+    #         logging.info(f"Extracting tgz file: [{tgz_file_path}] into dir: [{raw_data_dir}]")
+    #         with tarfile.open(tgz_file_path) as sales_tgz_file_obj:
+    #             sales_tgz_file_obj.extractall(path=raw_data_dir)
+    #         logging.info(f"Extraction completed")
 
-        except Exception as e:
-            raise CustomException(e,sys) from e
+    #     except Exception as e:
+    #         raise CustomException(e,sys) from e
 
     def read_from_local_drive(self):
         
@@ -68,11 +71,7 @@ class DataIngestion:
                 os.remove(raw_data_dir)
             os.makedirs(raw_data_dir,exist_ok=True)
             local_file = self.data_ingestion_config.local_file
-            read_write_file(raw_data_dir,local_file)
-            return raw_data_dir
-
-
-            
+            shutil.copy(local_file, raw_data_dir)
         except Exception as e:
             raise CustomException(e,sys)
     

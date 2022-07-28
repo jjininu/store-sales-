@@ -1,5 +1,5 @@
 training_pipeline_config:
-  pipeline_name: Wakmart_weekly_sales
+  pipeline_name: Walmart_weekly_sales
   artifact_dir: artifact
 
 data_ingestion_config:

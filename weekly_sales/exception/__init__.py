@@ -35,3 +35,4 @@ class CustomException(Exception):
     def __repr__(self) -> str:
         return CustomException.__name__.str()
 
+
