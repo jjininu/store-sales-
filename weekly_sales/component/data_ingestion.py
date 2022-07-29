@@ -36,6 +36,7 @@ class DataIngestion:
             os.makedirs(raw_data_dir,exist_ok=True)
             local_file = self.data_ingestion_config.local_file
             shutil.copy(local_file, raw_data_dir)
+            return local_file
         except Exception as e:
             raise CustomException(e,sys)
     
@@ -96,16 +97,10 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e,sys) from e
 
-    def initiate_data_ingestion_from_url(self)-> DataIngestionArtifact:
-        try:
-            tgz_file_path =  self.download_housing_data()
-            self.extract_tgz_file(tgz_file_path=tgz_file_path)
-            return self.split_data_as_train_test()
-        except Exception as e:
-            raise CustomException(e,sys) from e
     def initiate_data_ingestion_from_local(self):
         try:
-           self.read_from_local_drive()
+            self.transfer_data()
+            self.read_from_local_drive()
 
         except Exception as e:
             raise CustomException(e.sys)
