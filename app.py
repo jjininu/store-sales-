@@ -5,7 +5,7 @@ import pip
 from Weekly_sales.util.util import read_yaml_file, write_yaml_file
 from matplotlib.style import context
 from Weekly_sales.logger import logging
-from Weekly_sales.exception import HousingException
+from Weekly_sales.exception import CustomException
 import os, sys
 import json
 from Weekly_sales.config.configuration import Configuartion

@@ -22,7 +22,7 @@ class DataIngestion:
             self.data_ingestion_config = data_ingestion_config
 
         except Exception as e:
-            raise CustomException(e,sys)
+            raise Exception(e)
     
 
    
@@ -38,7 +38,7 @@ class DataIngestion:
             shutil.copy(local_file, raw_data_dir)
             return local_file
         except Exception as e:
-            raise CustomException(e,sys)
+            raise Exception(e)
     
     def split_data_as_train_test(self) -> DataIngestionArtifact:
         try:
@@ -95,15 +95,15 @@ class DataIngestion:
             return data_ingestion_artifact
 
         except Exception as e:
-            raise CustomException(e,sys) from e
+            raise Exception(e) 
 
     def initiate_data_ingestion_from_local(self):
         try:
             self.transfer_data()
-            self.read_from_local_drive()
+            self.split_data_as_train_test()
 
         except Exception as e:
-            raise CustomException(e.sys)
+            raise Exception(e)
     
     
 
