@@ -108,8 +108,9 @@ def predict():
     }
 
     if request.method == 'POST':
-
-
+        month = float(request.form['month'])
+        year = float(request.form['year'])
+        day_week = float(request.form['day_week'])
         Holiday_Flag = float(request.form['Holiday_Flag'])
         Temperature = float(request.form['Temperature'])
         Fuel_Price = float(request.form['Fuel_Pricee'])
@@ -120,7 +121,10 @@ def predict():
 
 
 
-        sales_data = SalesData(Holiday_Flag = Holiday_Flag,
+        sales_data = SalesData( month = month,
+                                year = year,
+                                 day_week = day_week,
+                                 Holiday_Flag = Holiday_Flag,
                                  Temperature = Temperature,
                                  Fuel_Price = Fuel_Price,
                                  CPI = CPI,
