@@ -123,11 +123,11 @@ def predict():
 
         sales_data = SalesData( month = month,
                                 year = year,
-                                 day_week = day_week,
-                                 Holiday_Flag = Holiday_Flag,
-                                 Temperature = Temperature,
-                                 Fuel_Price = Fuel_Price,
-                                 CPI = CPI,
+                                day_week = day_week,
+                                Holiday_Flag = Holiday_Flag,
+                                Temperature = Temperature,
+                                Fuel_Price = Fuel_Price,
+                                CPI = CPI,
                                 Unemployment = Unemployment)
             
             
