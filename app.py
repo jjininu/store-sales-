@@ -120,7 +120,7 @@ def predict():
 
 
 
-        sales_data = Salesdata(Holiday_Flag = Holiday_Flag,
+        sales_data = SalesData(Holiday_Flag = Holiday_Flag,
                                  Temperature = Temperature,
                                  Fuel_Price = Fuel_Price,
                                  CPI = CPI,
