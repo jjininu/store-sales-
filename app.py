@@ -2,16 +2,16 @@ from flask import Flask, request
 import sys
 
 import pip
-from Weekly_sales.util.util import read_yaml_file, write_yaml_file
+from weekly_sales.util.util import read_yaml_file, write_yaml_file
 from matplotlib.style import context
-from Weekly_sales.logger import logging
-from Weekly_sales.exception import CustomException
+from weekly_sales.logger import logging
+from weekly_sales.exception import CustomException
 import os, sys
 import json
-from Weekly_sales.config.configuration import Configuartion
-from Weekly_sales.constant import CONFIG_DIR, get_current_time_stamp
-from Weekly_sales.pipeline.pipeline import Pipeline
-from Weekly_sales.entity.housing_predictor import salesPredictor, SalesData
+from weekly_sales.config.configuration import Configuartion
+from weekly_sales.constant import CONFIG_DIR, get_current_time_stamp
+from weekly_sales.pipeline.pipeline import Pipeline
+from weekly_sales.entity.sales_predictor import salesPredictor, SalesData
 from flask import send_file, abort, render_template
 
 

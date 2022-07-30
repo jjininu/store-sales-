@@ -3,7 +3,7 @@ from typing import List
 
 #Declaring variables for setup functions
 PROJECT_NAME="Store-sales-predictor"
-VERSION="0.0.5"
+VERSION="0.0.6"
 AUTHOR="Junior Eshetu"
 DESRCIPTION="Machine Learning Project"
 
