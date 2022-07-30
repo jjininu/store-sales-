@@ -22,11 +22,12 @@ class FeatureGenerator(BaseEstimator, TransformerMixin):
   def fit(self):
     pass
   def transform(self,X):
-    date =pd.to_datetime( X[:, self.total_bedrooms_ix])
+    date =pd.to_datetime( X[:, self.Date_ix])
     year = date.year()
     month = date.month()
     day_week = date.day_of_week
     generated_feature = np.c_[X,date,year,day_week]
+    return generated_feature
 
 
 
