@@ -1,7 +1,7 @@
 from flask import Flask, request
 import sys
 
-import pip
+
 from weekly_sales.util.util import read_yaml_file, write_yaml_file
 from matplotlib.style import context
 from weekly_sales.logger import logging
